@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Tienda.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-light">Clientes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary btn-xs pull-right">Crear nuevo cliente</a>
+</p>
+<table class="table table-dark">
+    <thead>
+        
+        <tr class="text-light">
+            <th>
+                @Html.DisplayNameFor(model => model.Documento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th class="text-center">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="text-light">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Documento)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+                <td class="text-center m-2">
+                    <a asp-action="Edit" asp-route-id="@item.Documento"><i class="bi bi-pencil-square text-black bg-white fs-3 rounded-1 p-1"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Documento"><i class="bi bi-file-earmark-medical text-black bg-white rounded-1  fs-3 p-1"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Documento"><i class="bi bi-trash text-black bg-white rounded-1 fs-3 p-1"></i></a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,45 @@
+﻿@model Tienda.Models.Compra
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-light">Eliminar</h1>
+
+<h3 class="text-light">¿Estás seguro que deseas eliminar esto?</h3>
+<div class="bg-dark">
+    <h4 class="text-light">Compra</h4>
+    <hr />
+    <dl class="row text-light text-center">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaCompra)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaCompra)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdClienteNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdClienteNavigation.Documento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdProductoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdProductoNavigation.Id)
+        </dd>
+    </dl>
+</div>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+    <a asp-action="Index" class="btn btn-primary">Volver a la lista</a>
+</form>

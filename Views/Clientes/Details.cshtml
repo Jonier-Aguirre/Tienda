@@ -1,0 +1,31 @@
+﻿@model Tienda.Models.Cliente
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-light">Detalles</h1>
+
+<div class="bg-dark">
+    <h4 class="text-light">Cliente</h4>
+    <hr />
+    <dl class="row text-light text-center">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Apellido)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Apellido)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Documento" class="btn btn-success">Editar</a> 
+    <a asp-action="Index" class="btn btn-primary">Volver a la lista</a>
+</div>

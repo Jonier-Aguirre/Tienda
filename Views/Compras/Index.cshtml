@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Tienda.Models.Compra>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-light">Compras</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary btn-xs pull-right">Crear nueva compra</a>
+</p>
+<table class=" table table-dark">
+    <thead>
+        <tr class="text-light ">
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdClienteNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProductoNavigation)
+            </th>
+            <th class="text-center">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="text-light">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteNavigation.Documento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProductoNavigation.Id)
+            </td>
+                <td class="text-center m-2">
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square text-black bg-white fs-3 rounded-1 p-1"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-file-earmark-medical text-black bg-white rounded-1  fs-3 p-1"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash text-black bg-white rounded-1 fs-3 p-1"></i></a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

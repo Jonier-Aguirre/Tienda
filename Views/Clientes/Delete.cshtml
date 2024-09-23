@@ -1,0 +1,67 @@
+﻿@model Tienda.Models.Cliente
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["ErrorC"] != null)
+{
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content text-white">
+                <div class="modal-header bg-danger">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">¡¡ ERROR !!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger">
+                        @TempData["ErrorC"]
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Salir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <h1 class="text-light">Eliminar cliente</h1>
+
+</div>
+<div class="bg-dark">
+    <h4 class="text-light">Cliente</h4>
+    <hr />
+    <dl class="row text-light text-center">
+        <dt class = "col-sm-2 ">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Apellido)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Apellido)
+        </dd>
+    </dl>
+</div>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Documento" />
+    <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+    <a asp-action="Index" class="btn btn-primary">Volver a la lista</a>
+</form>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var error = '@TempData["ErrorC"]';
+            if (error) {
+                $('#exampleModal').modal('show');
+            }
+        });
+    </script>
+}
